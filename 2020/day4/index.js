@@ -78,6 +78,7 @@ export const part1 = (passports) => passports.filter(hasRequiredFields).length;
 export const part2 = (passports) => passports.filter(passportIsValid).length;
 
 getInput(import.meta.url, "\n\n").then((input) => {
+	console.log("--DAY 4--");
 	const passports = getPassports(input);
 	console.log("PART 1", part1(passports));
 	console.log("PART 2", part2(passports));
