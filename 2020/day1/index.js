@@ -5,15 +5,15 @@ const twoSum = (arr, sum) => {
 	let result = [];
 
 	for (let i = 0; i < arr.length; i++) {
-		let itemStart = arr[i],
-			itemEnd = arr[arr.length - 1 - i],
+		let itemStart = Number(arr[i]),
+			itemEnd = Number(arr[arr.length - 1 - i]),
 			startDiff = sum - itemStart,
 			endDiff = sum - itemEnd;
 
-		let mapDiff = arrMap.get(String(startDiff)) || arrMap.get(String(endDiff));
+		let mapDiff = arrMap.get(startDiff) || arrMap.get(endDiff);
 
 		if (mapDiff) {
-			result = [Number(mapDiff), sum - mapDiff];
+			result = [mapDiff, sum - mapDiff];
 			break;
 		} else {
 			arrMap.set(itemStart, itemStart);
