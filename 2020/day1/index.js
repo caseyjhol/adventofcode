@@ -44,6 +44,7 @@ export const part2 = (input, target) =>
 	threeSum(input, target).reduce((a, b) => a * b);
 
 getInput(import.meta.url).then((input) => {
+	console.log("--DAY 1--");
 	console.log("PART 1", part1(input, 2020));
 	console.log("PART 2", part2(input, 2020));
 });

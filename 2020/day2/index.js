@@ -48,6 +48,7 @@ export const part1 = (input) => getValid(input, checkValid1);
 export const part2 = (input) => getValid(input, checkValid2);
 
 getInput(import.meta.url).then((input) => {
+	console.log("--DAY 2--");
 	console.log("PART 1", part1(input));
 	console.log("PART 2", part2(input));
 });
