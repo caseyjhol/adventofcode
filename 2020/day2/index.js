@@ -6,8 +6,7 @@ const getRule = (line) => {
 		min = bounds[0],
 		max = bounds[1],
 		character = split[1].charAt(0),
-		password = split[split.length - 1],
-		charCount = password.length - password.split(character).join("").length;
+		password = split[split.length - 1];
 
 	return {
 		min,
