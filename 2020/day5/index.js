@@ -70,9 +70,9 @@ export const part2 = (passIds) => {
 	return missing;
 };
 
-getInput(import.meta.url).then((passes) => {
-	console.log("--DAY 5--");
-	const passIds = getIds(passes);
-	console.log("PART 1", part1(passIds));
-	console.log("PART 2", part2(passIds));
-});
+const passes = getInput(import.meta.url);
+
+console.log("--DAY 5--");
+const passIds = getIds(passes);
+console.log("PART 1", part1(passIds));
+console.log("PART 2", part2(passIds));

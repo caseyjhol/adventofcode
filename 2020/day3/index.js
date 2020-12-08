@@ -15,17 +15,17 @@ export const part1 = (input, slope) => traverse(input, slope);
 export const part2 = (input, slopes = []) =>
 	slopes.map((slope) => traverse(input, slope)).reduce((a, b) => a * b);
 
-getInput(import.meta.url).then((input) => {
-	console.log("--DAY 3--");
-	console.log("PART 1", part1(input, [3, 1]));
-	console.log(
-		"PART 2",
-		part2(input, [
-			[1, 1],
-			[3, 1],
-			[5, 1],
-			[7, 1],
-			[1, 2],
-		])
-	);
-});
+const input = getInput(import.meta.url);
+
+console.log("--DAY 3--");
+console.log("PART 1", part1(input, [3, 1]));
+console.log(
+	"PART 2",
+	part2(input, [
+		[1, 1],
+		[3, 1],
+		[5, 1],
+		[7, 1],
+		[1, 2],
+	])
+);
