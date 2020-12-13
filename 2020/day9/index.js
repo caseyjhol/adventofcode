@@ -1,28 +1,5 @@
 import getInput from "../../util/getInput.js";
-
-const twoSum = (arr, sum) => {
-	const arrMap = new Map();
-	let result = [];
-
-	for (let i = 0; i < arr.length; i++) {
-		let itemStart = Number(arr[i]),
-			itemEnd = Number(arr[arr.length - 1 - i]),
-			startDiff = sum - itemStart,
-			endDiff = sum - itemEnd;
-
-		let mapDiff = arrMap.get(startDiff) || arrMap.get(endDiff);
-
-		if (mapDiff) {
-			result = [mapDiff, sum - mapDiff];
-			break;
-		} else {
-			arrMap.set(itemStart, itemStart);
-			arrMap.set(itemEnd, itemEnd);
-		}
-	}
-
-	return result;
-};
+import { twoSum } from "../day1/index.js";
 
 export const part1 = (input, pre) => {
 	let outlier = 0;

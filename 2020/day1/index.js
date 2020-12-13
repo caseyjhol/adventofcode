@@ -1,6 +1,6 @@
 import getInput from "../../util/getInput.js";
 
-const twoSum = (arr, sum) => {
+export const twoSum = (arr, sum) => {
 	const arrMap = new Map();
 	let result = [];
 
