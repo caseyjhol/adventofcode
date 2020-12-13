@@ -16,10 +16,6 @@ export const part1 = (input, pre) => {
 	return Number(outlier);
 };
 
-const sumNext = (input, target, index = 0) => {
-	return sumNext(input, target, index);
-};
-
 export const part2 = (input, target) => {
 	let i = 0;
 	let endIndex;
