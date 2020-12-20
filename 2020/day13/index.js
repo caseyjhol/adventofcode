@@ -28,8 +28,6 @@ export const part2 = (input) => {
 	let step = busIds[0].id;
 	let timestamp = step;
 
-	const lastBus = busIds[busIds.length - 1];
-
 	for (let i = 1; i < busIds.length; i++) {
 		const bus = busIds[i];
 
