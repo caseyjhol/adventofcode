@@ -99,14 +99,19 @@ const convertFloater = (address, index = 0, addresses = []) => {
 
 const applyMaskV2 = (number, masks) => {
 	const numArr = Array.from(number.toString(2).padStart(36, "0"));
+	let firstFloat;
 
 	for (let i = 0; i < masks.length; i++) {
 		const mask = masks[i];
 
 		numArr[mask.index] = mask.num;
+
+		if (firstFloat === undefined && mask.num === "X") {
+			firstFloat = mask.index;
+		}
 	}
 
-	return convertFloater(numArr);
+	return convertFloater(numArr, firstFloat);
 };
 
 export const part2 = (input) => {
