@@ -27,7 +27,7 @@ const moveCards = (cards, winner) => {
 };
 
 const setCache = (cache, cards) => {
-	const cardString = [...cards.player1, "x", ...cards.player2].join("");
+	const cardString = [...cards.player1, "x", ...cards.player2].join(",");
 
 	if (cache.has(cardString)) {
 		return false;
@@ -36,7 +36,8 @@ const setCache = (cache, cards) => {
 	}
 };
 
-const playRound = (cards, recursive = false, cardCache = new Set()) => {
+// if cardCache is undefined, it means a new game has been started
+const playGame = (cards, recursive = false, cardCache = new Set()) => {
 	let winner;
 
 	if (!cards.player1.length || !cards.player2.length) {
@@ -63,14 +64,23 @@ const playRound = (cards, recursive = false, cardCache = new Set()) => {
 			player2: cards.player2.slice(1, player2 + 1),
 		};
 
-		winner = playRound(cardsCopy, true);
+		// if player 1 has the highest card in their hand, they'll win the sub game
+		if (
+			cardsCopy.player1.includes(
+				Math.max(...cardsCopy.player1, ...cardsCopy.player2)
+			)
+		) {
+			winner = "player1";
+		} else {
+			winner = playGame(cardsCopy, true);
+		}
 	} else {
 		winner = player1 > player2 ? "player1" : "player2";
 	}
 
 	cards = moveCards(cards, winner);
 
-	return playRound(cards, recursive, cardCache);
+	return playGame(cards, recursive, cardCache);
 };
 
 const calculateScore = (cards) => {
@@ -83,16 +93,16 @@ const calculateScore = (cards) => {
 	return score;
 };
 
-const playGame = (input, recursive = false) => {
+const playCombat = (input, recursive = false) => {
 	const cards = getPlayerCards(input);
-	const winner = playRound(cards, recursive);
+	const winner = playGame(cards, recursive);
 
 	return calculateScore(cards[winner]);
 };
 
-export const part1 = (input) => playGame(input);
+export const part1 = (input) => playCombat(input);
 
-export const part2 = (input) => playGame(input, true);
+export const part2 = (input) => playCombat(input, true);
 
 const input = getInput(import.meta.url);
 
